@@ -14,7 +14,7 @@ services:
     image: strongtownskelowna/strongtownskelowna:prod
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.app.rule=Host(`localhost`)"
+      - "traefik.http.routers.app.rule=Host(`128.199.14.41`)"
       - "traefik.http.routers.app.entrypoints=websecure"
       - "traefik.http.routers.app.tls.certresolver=myresolver"
       - "com.centurylinklabs.watchtower.enable=true"
