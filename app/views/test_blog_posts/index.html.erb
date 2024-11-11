@@ -1,0 +1,9 @@
+<h1>hello</h1>
+
+<ul>
+<% @test_blog_posts.each do |post| %>
+  <li>
+    <%= link_to post.title, test_blog_post_path(post.id) %>
+  </li>
+<% end %>
+</ul>
