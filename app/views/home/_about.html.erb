@@ -1,0 +1,18 @@
+<div class="mb-4 md:flex">
+  <h2 class="text-blue-dark font-georgia mb-4 md:w-1/2">About</h2> 
+  <p class="">To accelerate change, we are focusing our efforts on the following five priority campaigns</p>
+</div>
+<ul h-scroll-role="list" class="flex flex-col gap-4 mb-4">
+  <% campaigns.each do |campaign| %>
+    <li class="bg-whitesmoke rounded-lg p-4">
+      <h3 class="text-blue-dark font-georgia mb-4"><%= campaign[:title] %></h3> 
+        <div class="w-full h-52 mb-4 md:h-96 ">
+          <%= image_tag campaign[:img], :class => "rounded-lg h-full w-full object-cover" %>
+        </div>
+      <p ><%= campaign[:description] %></p>
+    </li>
+  <% end %>
+</ul>
+<div class="mb-24 flex justify-center items-center">
+  <%= button_to "MORE ABOUT US HERE", about_path, method: "get", class: "transition duration-400 hover:bg-blue-dark hover:text-white py-2 px-4 rounded-lg text-blue-dark border border-blue-dark" %>
+</div>

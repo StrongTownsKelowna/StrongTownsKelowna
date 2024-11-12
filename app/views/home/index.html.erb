@@ -1,3 +1,6 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
-<p>Yo Yo Yo</p>
+<%= javascript_include_tag '/js/scrolling_animations' %>
+<%= render partial: 'hero' %>
+<%= render partial: 'about', locals: { campaigns: @campaigns } %>
+<%= render partial: 'articles', locals: { articles: @articles } %>
+<%= render partial: 'components/contact' %>
+<%= render partial: 'components/footer' %>
