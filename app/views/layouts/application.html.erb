@@ -16,21 +16,24 @@
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
-
+    <script src="https://kit.fontawesome.com/91ce943063.js" crossorigin="anonymous"></script>
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="bg-white m-4 text-dark font-arial">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <div>
-      <% if user_signed_in? %>
-        <%= button_to "Log out", destroy_user_session_path, method: :delete %>
-      <% end %>
+  <body class="bg-white text-dark font-arial">
+    <div class="m-4">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <div>
+        <% if user_signed_in? %>
+          <%= button_to "Log out", destroy_user_session_path, method: :delete %>
+        <% end %>
+      </div>
+      <%= yield %>
     </div>
-    <%= yield %>
+    <%= render partial: 'components/footer' %>
   </body>
 </html>

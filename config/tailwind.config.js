@@ -23,6 +23,17 @@ module.exports = {
         georgia: ['Georgia', 'serif'],    // Georgia font family
         arial: ['Arial', 'sans-serif'],   // Arial font family
       },
+      spacing: {
+        '128': '32rem',
+      },
+      scale: {
+        '75': '0.75',
+        '80': '0.80',
+        '85': '0.85',
+        '95': '0.95',
+        '175': '1.75',
+        '200': '2',
+      }
     },
   },
   plugins: [

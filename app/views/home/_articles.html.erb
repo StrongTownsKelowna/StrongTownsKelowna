@@ -1,20 +1,20 @@
-<div class="mb-4">
-  <h2 class="text-blue-dark font-georgia mb-4">Articles</h2> 
-  <p class=" flex items-end text-4xl text-blue-dark font-georgia font-semibold">How we can take control of our place's financial future.</p>
-</div>
-<ul class="flex flex-col gap-8 mb-4">
+<ul class="flex flex-col gap-4 mb-4 lg:h-128 lg:flex-row lg:overflow-x-auto lg:mb-20">
+  <div class="mb-4 lg:flex lg:flex-col lg:justify-between lg:min-w-64">
+    <h2 class="text-blue-dark font-georgia mb-4">ARTICLES</h2> 
+    <p class=" flex items-end text-4xl text-blue-dark font-georgia font-semibold">How we can take control of our place's financial future.</p>
+  </div>
   <% articles.each do |article| %>
-    <li>
-      <div class="md:flex md:justify-between md:items-end">
+    <li class="lg:min-w-128 lg:bg-whitesmoke lg:p-4 lg:rounded-lg">
+      <div class="md:flex md:justify-between md:items-end lg:flex-col lg:items-start">
         <h3 class="text-blue-dark text-2xl font-georgia"><%= article[:title] %></h3> 
         <p><%= article[:author] %></p>
       </div>
-      <p class="ml-4 text-light">
-        <%= article[:summary] %>
+      <p class="ml-4 mt-4 text-light">
+      <%= article[:summary] %>
       </p>
     </li>
   <% end %>
 </ul>
-<div class="mb-24 flex justify-center items-center">
-  <%= button_to "ALL ARTICLES", articles_path, method: "get", class: "transition duration-400 hover:bg-blue-dark hover:text-white py-2 px-4 rounded-lg text-blue-dark border border-blue-dark" %>
+<div class="mb-24 flex justify-center items-center lg:mb-96">
+  <%= button_to "ALL ARTICLES", articles_path, method: "get", class: "transition duration-300 hover:bg-blue-dark hover:text-white py-2 px-4 rounded-lg text-blue-dark border border-blue-dark" %>
 </div>
