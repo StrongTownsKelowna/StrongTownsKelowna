@@ -8,3 +8,11 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+.h-scroll-picture-half {
+  height: 6rem;
+}
+
+.h-scroll-picture-full {
+  height: 14rem;
+}

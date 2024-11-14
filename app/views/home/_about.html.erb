@@ -5,16 +5,16 @@
   </p>
 </div>
 <h3 class="text-blue-dark font-georgia mb-4 md:w-1/3 ">5 PRIORITY CAMPAIGNS</h3> 
-<ul h-scroll-role="list" class="flex flex-col gap-4 mb-4 lg:flex-row lg:overflow-x-auto lg:mb-20">
+<ul h-scroll-role="list" class="flex flex-col gap-4 mb-4 lg:flex-row lg:overflow-x-auto lg:mb-20 lg:scroll-smooth">
   <% campaigns.each do |campaign| %>
-    <li class="bg-whitesmoke rounded-lg p-4 md:min-h-128 lg:min-w-128 lg:min-h-128">
-      <h3 class="text-blue-dark font-georgia mb-4"><%= campaign[:title] %></h3> 
-      <div class="flex gap-4">
-        <div class="w-full h-52 mb-4 md:h-96 overflow-hidden rounded-lg">
-          <%= image_tag campaign[:img], :class => "h-full rounded-lg w-full object-cover object-left scale-125 md:scale-200 lg:scale-95" %>
+    <li class="bg-whitesmoke flex flex-col gap-1 rounded-lg p-4 min-h-96 md:min-h-128 lg:min-w-128">
+      <h3 class="text-blue-dark font-georgia flex-1 mb-4"><%= campaign[:title] %></h3> 
+      <div h-scroll-role="picture" class="flex gap-4 transition-all duration-500 h-scroll-picture-half">
+        <div class=" w-full h-full mb-4 relative overflow-hidden rounded-lg">
+          <%= image_tag campaign[:img], :class => "absolute h-56 bottom-0 rounded-lg w-full object-cover object-left scale-125 md:scale-200 lg:scale-95" %>
         </div>
-        <div class="w-full h-52 mb-4 md:h-96 overflow-hidden rounded-full">
-          <%= image_tag campaign[:img], :class => "h-full w-full rounded-full object-cover object-right scale-125 md:scale-200 lg:scale-95" %>
+        <div class="w-full h-full mb-4 relative overflow-hidden rounded-full">
+          <%= image_tag campaign[:img], :class => "absolute h-56 bottom-0 w-full rounded-full object-cover object-right scale-125 md:scale-200 lg:scale-95" %>
         </div>
       </div>
       <p ><%= campaign[:description] %></p>
