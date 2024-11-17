@@ -8,11 +8,46 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+/*'sm': '640px',*/
+/*// => @media (min-width: 640px) { ... }*/
+/**/
+/*'md': '768px',*/
+/*// => @media (min-width: 768px) { ... }*/
+/**/
+/*'lg': '1024px',*/
+/*// => @media (min-width: 1024px) { ... }*/
+/**/
+/*'xl': '1280px',*/
+/*// => @media (min-width: 1280px) { ... }*/
+/**/
+/*'2xl': '1536px',*/
+/*// => @media (min-width: 1536px) { ... }*/
 
-.h-scroll-picture-half {
-  height: 6rem;
-}
 
-.h-scroll-picture-full {
-  height: 14rem;
+@media (prefers-reduced-motion: no-preference) {
+  /* about */
+
+  .about-image {
+    opacity: 0;
+    filter: blur(4px);
+    animation: about-image linear forwards;
+    animation-timeline: view();
+    animation-range: 100px 500px;
+  }
+
+  @keyframes about-image {
+    to {
+      opacity: 1;
+      filter: blur(0px);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .about-image {
+      animation: none;
+      opacity: 1;
+      filter: blur(0px);
+    }
+  }
+
 }

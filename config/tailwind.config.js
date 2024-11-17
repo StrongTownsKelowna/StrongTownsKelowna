@@ -24,7 +24,12 @@ module.exports = {
         arial: ['Arial', 'sans-serif'],   // Arial font family
       },
       spacing: {
+        '100': '28rem',
+        '110': '30rem',
         '128': '32rem',
+        '256': '64rem',
+        '384': '96rem',
+        '512': '128rem',
       },
       scale: {
         '75': '0.75',
