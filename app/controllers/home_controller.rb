@@ -7,9 +7,10 @@ class HomeController < ApplicationController
       { title: "Transparent Local Accounting", description: "We seek to reveal the financial implications of the Suburban Experiment by increasing the transparency of local government accounting practices.", img: "city-hall.jpg" },
       { title: "End Highway Expansion", description: "We seek to curtail the primary mechanism of local wealth destruction and municipal insolvency: the continued expansion of British Columbia's highways and related auto-based transportation systems.", img: "highway-expansion.jpg" }
     ]
-    @articles = [
-      { title: "The Suburban Expirement", author: "John smith", summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." },
-      { title: "Parking Minimums", author: "Jane Doe", summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." }
-    ]
+    @articles = Article.all()
+    # @articles = [
+    #   { title: "The Suburban Expirement", author: "John smith", summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." },
+    #   { title: "Parking Minimums", author: "Jane Doe", summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." }
+    # ]
   end
 end
