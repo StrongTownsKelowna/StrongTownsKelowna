@@ -1,3 +1,4 @@
+<%= render partial: 'components/header' %>
 <div class="w-full">
   <% if notice.present? %>
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
@@ -5,17 +6,10 @@
 
   <% content_for :title, "Articles" %>
 
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Articles</h1>
-    <%= link_to "New article", new_article_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
-  </div>
 
-  <div id="articles" class="min-w-full">
+  <ul id="articles" class="min-w-full gap-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
     <% @articles.each do |article| %>
       <%= render article %>
-      <p>
-        <%= link_to "Show this article", article, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-      </p>
     <% end %>
-  </div>
+  </ul>
 </div>
