@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		article_start = 'center center'
 		article_end = 'bottom 25%'
 		about_from_x = 1500
-		about_to_x = -1020
+		about_to_x = -3000
 		article_from_x = 1000
 		article_to_x = 20
 	}
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		article_start = 'center center'
 		article_end = 'bottom 25%'
 		about_from_x = 1010
-		about_to_x = -1500
+		about_to_x = -2300
 		article_from_x = 1000
 		article_to_x = 20
 	}

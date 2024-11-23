@@ -1,0 +1,19 @@
+<li class="" id="<%= dom_id(article) %>">
+  <div class="mb-4">
+    <h3 class="text-blue-dark text-2xl font-georgia"><%= article.title %></h3> 
+    <div class="md:flex gap-4 justify-between items-center">
+      <p><%= article.author %></p>
+      <p class="text-light"><%= article.created_at.to_formatted_s(:long) %></p>
+    </div>
+  </div>
+  <div class="p-4 bg-whitesmoke rounded-lg text-light flex flex-col gap-4" >
+    <div class="h-56 overflow-hidden">
+      <%= article.summary %>
+    </div>
+    <p class="flex justify-end hover:text-blue-dark">
+      <%= link_to article, class: "" do %>
+        <i class="fa-solid fa-arrow-right"></i>
+      <% end %>
+    </p>
+  </div>
+</li>

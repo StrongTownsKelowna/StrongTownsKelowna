@@ -12,3 +12,10 @@ user.update!(
   password: "mypassword",
   password_confirmation: "mypassword"
 )
+
+Category.create([
+  { name: 'Roads' },
+  { name: 'Finance' },
+  { name: 'Cycling' },
+  { name: 'Public Transit' }
+])

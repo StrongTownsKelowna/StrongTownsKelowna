@@ -15,7 +15,8 @@ module.exports = {
       'white': '#fff',
       'whitesmoke': '#f5f5f5',
       'dark': '#221E20',
-      'light': '#221E20AA'
+      'light': '#221E20AA',
+      'transparent': '#ffffff00',
     },
     extend: {
       fontFamily: {
@@ -27,6 +28,7 @@ module.exports = {
         '100': '28rem',
         '110': '30rem',
         '128': '32rem',
+        '192': '48rem',
         '256': '64rem',
         '384': '96rem',
         '512': '128rem',
