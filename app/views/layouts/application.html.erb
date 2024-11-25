@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="h-full">
   <head>
     <title><%= content_for(:title) || "Strong Towns Kelowna" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -25,17 +25,15 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="flex flex-col h-svh bg-white text-dark font-arial">
-    <div class="flex-1 m-4">
+  <body class="min-h-full flex flex-col bg-white text-dark font-arial">
+    <main class="flex flex-col flex-1 m-4">
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
-      <div>
-        <% if user_signed_in? %>
-          <%= button_to "Log out", destroy_user_session_path, method: :delete %>
-        <% end %>
-      </div>
+      <% if user_signed_in? %>
+        <%= button_to "Log out", destroy_user_session_path, method: :delete %>
+      <% end %>
       <%= yield %>
-    </div>
+    </main>
     <%= render partial: 'components/footer' %>
   </body>
 </html>

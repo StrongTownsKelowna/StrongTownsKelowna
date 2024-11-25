@@ -1,0 +1,15 @@
+<li>
+  <% if not is_selected then %>
+    <%= link_to articles_path(category_id: category.id) do %>
+      <span class="bg-whitesmoke p-1 rounded-lg text-sm ">
+        <%= category.name %>
+      </span>
+    <% end %>
+  <% else %>
+    <%= link_to articles_path do %>
+      <span class="bg-blue p-1 rounded-lg text-sm ">
+        <%= category.name %>
+      </span>
+    <% end %>
+  <% end %>
+</li>

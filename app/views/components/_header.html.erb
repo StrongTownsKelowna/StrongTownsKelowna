@@ -1,5 +1,7 @@
-<div class="flex flex-col lg:flex-row justify-start gap-4 mb-4">
+<div class="flexjustify-start gap-4 mb-4">
   <div class="flex font-extrabold items-end text-gold text-2xl w-1/2 font-georgia xl:text-3xl 2xl:text-4xl">
-    <span>STK</span>
+    <%= link_to "/", data: {turbo: false} do %>
+      <span>STK</span>
+    <% end %>
   </div>
 </div>

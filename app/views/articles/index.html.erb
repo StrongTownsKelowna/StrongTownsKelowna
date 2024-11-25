@@ -1,15 +1,20 @@
-<%= render partial: 'components/header' %>
-<div class="w-full">
+  <%= render partial: 'components/header' %>
   <% if notice.present? %>
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
 
   <% content_for :title, "Articles" %>
-
-
+  <ul class="flex flex-nowrap gap-1 justify-center p-4">
+    <% @categories.each do |category| %>
+      <%= render partial: "components/category_preview", locals: { category: category, is_selected: (@category_id == category.id)} %>
+    <% end %>
+  </ul>
   <ul id="articles" class="min-w-full gap-4 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
     <% @articles.each do |article| %>
       <%= render partial: "article_preview", locals: { article: article} %>
     <% end %>
   </ul>
-</div>
+  <div class="p-4 py-8 flex flex-1 h-full justify-center items-center font-bold text-lg text-light underline underline-offset-8">
+    <p>More coming soon!</p>
+  </div>
+  <%= render partial: 'pagination', locals: { page: @page, category_id: @category_id } %>

@@ -1,10 +1,17 @@
 class ArticlesController < ApplicationController
+  RECORD_PER_PAGE = 10
   before_action :authenticate_user!, except: [ :show, :index ]
   before_action :set_article, only: %i[ show edit update destroy ]
 
   # GET /articles or /articles.json
   def index
-    @articles = Article.all
+    @page = params.fetch(:page, 0).to_i()
+    @category_id = params.fetch(:category_id, 0).to_i()
+    @categories = Category.all
+    @articles = Article
+      .where("category_id = ? OR ? = 0", @category_id, @category_id)
+      .offset(@page * RECORD_PER_PAGE)
+      .limit(RECORD_PER_PAGE)
   end
 
   # GET /articles/1 or /articles/1.json
