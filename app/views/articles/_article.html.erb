@@ -1,8 +1,10 @@
 <div class="" id="<%= dom_id article %>">
-  <div class="mb-4 md:flex md:justify-between md:items-end lg:flex-col lg:items-start">
+  <div class="mb-4">
     <h3 class="text-blue-dark text-2xl font-georgia"><%= article.title %></h3> 
-    <p><%= article.created_at.to_formatted_s(:long) %></p>
-    <p><%= article.author %></p>
+    <div class="md:flex gap-4 justify-between items-center">
+      <p><%= article.author %></p>
+      <p class="text-light"><%= article.created_at.to_formatted_s(:long) %></p>
+    </div>
   </div>
   <%= render partial: 'components/line_break' %>
   <%= article.body %>
