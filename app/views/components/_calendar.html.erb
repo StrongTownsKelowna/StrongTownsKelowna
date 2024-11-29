@@ -1,0 +1,13 @@
+<div class="w-full">
+  <%= turbo_frame_tag 'calendar' do %>
+    <%= month_calendar(events: @events) do |date, events| %>
+      <%= date.day %>
+
+      <% events.each do |event| %>
+        <div>
+          <%= event.name %>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

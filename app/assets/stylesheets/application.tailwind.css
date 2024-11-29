@@ -11,6 +11,16 @@
 }
 
 */
+:root {
+      --color-blue: #a6c6ed;
+      --color-gold: #ffb84d;
+      --color-blue-dark: #0c2440;
+      --color-white: #fff;
+      --color-whitesmoke: #f5f5f5;
+      --color-dark: #221E20;
+      --color-light: #221E20AA;
+      --color-transparent: #ffffff00;
+}
 
 .transform-rotate-90 {
 	transform: rotate(90deg);

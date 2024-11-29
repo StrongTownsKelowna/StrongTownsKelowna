@@ -2,4 +2,7 @@
 <%= render partial: 'hero' %>
 <%= render partial: 'about', locals: { campaigns: @campaigns } %>
 <%= render partial: 'articles', locals: { articles: @articles } %>
-<%= render partial: 'components/contact' %>
+<div class="flex flex-col gap-4 md:flex-row">
+    <%= render partial: 'components/contact' %>
+    <%= render partial: 'components/calendar', locals: { events: @events } %>
+</div>

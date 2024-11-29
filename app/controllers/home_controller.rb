@@ -8,9 +8,7 @@ class HomeController < ApplicationController
       { title: "End Highway Expansion", description: "We seek to curtail the primary mechanism of local wealth destruction and municipal insolvency: the continued expansion of British Columbia's highways and related auto-based transportation systems.", img: "highway-expansion.jpg" }
     ]
     @articles = Article.all()
-    # @articles = [
-    #   { title: "The Suburban Expirement", author: "John smith", summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." },
-    #   { title: "Parking Minimums", author: "Jane Doe", summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." }
-    # ]
+    start_date = params.fetch(:start_date, Date.today).to_date
+    @events = Event.where(start_time: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week)
   end
 end
