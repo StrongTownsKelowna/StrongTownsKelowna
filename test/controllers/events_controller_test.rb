@@ -3,14 +3,16 @@ require "test_helper"
 class EventsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @event = events(:one)
+    sign_in users(:brian)
   end
 
   test "should get index" do
+    sign_out(:brian)
     get events_url
     assert_response :success
   end
 
-  test "should get new" do
+  test "should redirect new if not logged in" do
     get new_event_url
     assert_response :success
   end
@@ -24,11 +26,12 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show event" do
+    sign_out(:brian)
     get event_url(@event)
     assert_response :success
   end
 
-  test "should get edit" do
+  test "should redirect edit if not logged in" do
     get edit_event_url(@event)
     assert_response :success
   end

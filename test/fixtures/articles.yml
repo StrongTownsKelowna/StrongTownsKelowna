@@ -2,6 +2,12 @@
 
 one:
   title: MyString
+  author: MyString
+  summary: MyString
+  category_id: one
 
-two:
+new:
   title: MyString
+  author: MyString
+  summary: MyString
+  category_id: one
