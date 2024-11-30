@@ -15,7 +15,7 @@
         <li about="item" class="bg-whitesmoke flex flex-col gap-4 rounded-lg p-4 min-h-96 md:min-w-96 lg:w-96 xl:min-w-128 2xl:min-w-192">
           <h3 class="text-blue-dark font-georgia"><%= campaign[:title] %></h3> 
           <div>
-            <%= image_tag campaign[:img], :class => "about-image h-56 bottom-0 rounded-lg w-full object-cover md:h-full " %>
+            <%= image_tag campaign[:img], :class => "about-image h-56 bottom-0 rounded-lg w-full object-cover md:h-full ", loading: "lazy" %>
           </div>
           <p ><%= campaign[:description] %></p>
         </li>

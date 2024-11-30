@@ -3,7 +3,7 @@ class EventsController < ApplicationController
 
   # GET /events or /events.json
   def index
-    @events = Event.all
+    @events = Event.order(start_time: :asc)
   end
 
   # GET /events/1 or /events/1.json
@@ -65,6 +65,6 @@ class EventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.expect(event: [ :name, :start_time, :end_time, :location ])
+      params.expect(event: [ :name, :start_time, :end_time, :location, :description ])
     end
 end

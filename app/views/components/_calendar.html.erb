@@ -1,12 +1,12 @@
 <div class="w-full">
   <%= turbo_frame_tag 'calendar' do %>
-    <%= month_calendar(events: @events) do |date, events| %>
+    <%= month_calendar(events: events) do |date, events| %>
       <%= date.day %>
 
       <% events.each do |event| %>
-        <div>
+        <%= link_to event, data: { turbo: false} do %>
           <%= event.name %>
-        </div>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>

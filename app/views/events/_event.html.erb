@@ -1,22 +1,27 @@
 <div id="<%= dom_id event %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Name:</strong>
+  <p class="mb-4 flex gap-4">
+    <strong class="block font-bold mb-1">Name:</strong>
     <%= event.name %>
   </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Start time:</strong>
+  <p class="mb-4 flex gap-4">
+    <strong class="block font-bold mb-1">Start time:</strong>
     <%= event.start_time %>
   </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">End time:</strong>
+  <p class="mb-4 flex gap-4">
+    <strong class="block font-bold mb-1">End time:</strong>
     <%= event.end_time %>
   </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Location:</strong>
+  <p class="mb-4 flex gap-4">
+    <strong class="block font-bold mb-1">Location:</strong>
     <%= event.location %>
+  </p>
+
+  <p class="mb-4 flex gap-4">
+    <strong class="block font-bold mb-1">Description:</strong>
+    <%= event.description %>
   </p>
 
 </div>
