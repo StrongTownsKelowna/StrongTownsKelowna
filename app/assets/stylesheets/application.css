@@ -62,6 +62,16 @@
 
 }
 
+.lazy-img {
+  object-position: center;
+  object-fit: cover;
+}
+
+.blur-load {
+  background-size: cover;
+  background-position: center;
+}
+
 .simple-calendar {
   background-color: var(--whitesmoke);
   padding: 1rem;
