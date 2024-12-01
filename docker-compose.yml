@@ -1,64 +1,36 @@
 version: '3.8'
-
 services:
-  watchtower:
-    image: containrrr/watchtower
-    command:
-      - "--label-enable"
-      - "--interval"
-      - "30"
-      - "--rolling-restart"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
   app:
-    image: strongtownskelowna/strongtownskelowna:prod
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.app.rule=Host(`128.199.14.41`)"
-      - "traefik.http.routers.app.entrypoints=websecure"
-      - "traefik.http.routers.app.tls.certresolver=myresolver"
-      - "com.centurylinklabs.watchtower.enable=true"
+    build:
+      context: .
+      dockerfile: Dockerfile
     environment:
-      RAILS_ENV: production
-      RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}  # Ensure this is set securely in an .env file or the environment
-      SECRET_KEY_BASE: ${SECRET_KEY_BASE}    # Also set this securely
-    volumes:
-      - ./log:/rails/log
-      - ./tmp:/rails/tmp
-      - ./storage:/rails/storage
-    command: ["./bin/rails","s","-p", "80", "-b", "0.0.0.0"]
+      - DATABASE_HOST=db
+      - DATABASE_NAME=${DATABASE_NAME}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+      - DATABASE_USERNAME=postgres
+      - RAILS_ENV=${RAILS_ENV}
+      - RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
     deploy:
       mode: replicated
       replicas: 3
-
-  reverse-proxy:
-    image: traefik:v3.1
-    command:
-      # - "--api.insecure=true"
-      - "--providers.docker"
-      - "--entryPoints.websecure.address=:443"
-      - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
-      - "--certificatesresolvers.myresolver.acme.email=isaiahpaget@gmail.com"
-      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
-      - "--entrypoints.web.address=:80"
-      - "--entrypoints.web.http.redirections.entrypoint.to=websecure"
-      - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
-    ports:
-      # the HTTP port
-      - "80:80"
-      # Secure port
-      - "443:443"
-      # the web ui
-      # - "8080:8080"
+    restart: always
+    depends_on:
+      db:
+        condition: service_healthy
+  db:
+    image: postgres
+    restart: always
+    user: postgres
     volumes:
-      - letsencrypt:/letsencrypt
-      - /var/run/docker.sock:/var/run/docker.sock
-
-# Volumes for persisting data
+      - db-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=${DATABASE_NAME}
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+    healthcheck:
+      test: [ "CMD", "pg_isready" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 volumes:
-  db_data:
-  log:
-  tmp:
-  storage:
-  letsencrypt:
-
+  db-data:
