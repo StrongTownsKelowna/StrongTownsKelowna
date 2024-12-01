@@ -7,15 +7,19 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-user = User.where(email: "johnsmith@mail.com").first_or_initialize
-user.update!(
-  password: "mypassword",
-  password_confirmation: "mypassword"
-)
+# user = User.where(email: "johnsmith@mail.com").first_or_initialize
+# user.update!(
+#   password: "mypassword",
+#   password_confirmation: "mypassword"
+# )
 
-Category.create([
+categories = [
   { name: 'Roads' },
   { name: 'Finance' },
   { name: 'Cycling' },
   { name: 'Public Transit' }
-])
+]
+
+categories.each do |category|
+  Category.find_or_create_by(name: category[:name])
+end
