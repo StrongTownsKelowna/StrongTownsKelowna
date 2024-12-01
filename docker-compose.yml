@@ -11,9 +11,9 @@ services:
       - DATABASE_USERNAME=postgres
       - RAILS_ENV=${RAILS_ENV}
       - RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
-    deploy:
-      mode: replicated
-      replicas: 3
+    # deploy:
+    #   mode: replicated
+    #   replicas: 3
     restart: always
     depends_on:
       db:
