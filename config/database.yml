@@ -1,9 +1,3 @@
-# SQLite. Versions 3.8.0 and up are supported.
-#   gem install sqlite3
-#
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem "sqlite3"
-#
 default: &default
   adapter: sqlite3
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -12,39 +6,33 @@ default: &default
 production-db: &proddb
   adapter: postgresql
   encoding: unicode
-  # For details on connection pooling, see Rails configuration guide
-  # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: <%= ENV["DATABASE_HOST"] %>
+  port: <%= ENV.fetch("DATABASE_PORT") { 5432 } %>
+  username: <%= ENV["DATABASE_USERNAME"] %>
+  password: <%= ENV["DATABASE_PASSWORD"] %>
 
 development:
   <<: *default
   database: storage/development.sqlite3
 
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
 test:
   <<: *default
   database: storage/test.sqlite3
 
-
-# Store production database in the storage/ directory, which by default
-# is mounted as a persistent Docker volume in config/deploy.yml.
 production:
   primary: &primary_production
     <<: *proddb
-    database: strong_towns_kelowna_production
-    username: strong_towns_kelowna
-    password: <%= ENV["STRONG_TOWNS_KELOWNA_DATABASE_PASSWORD"] %>
+    database: <%= ENV["DATABASE_NAME"] || "strong_towns_kelowna_production" %>
   cache:
-    <<: *primary_production
-    database: strong_towns_kelowna_production_cache
+    <<: *proddb
+    database: <%= ENV["CACHE_DATABASE_NAME"] || "strong_towns_kelowna_production_cache" %>
     migrations_paths: db/cache_migrate
   queue:
-    <<: *primary_production
-    database: strong_towns_kelowna_production_queue
+    <<: *proddb
+    database: <%= ENV["QUEUE_DATABASE_NAME"] || "strong_towns_kelowna_production_queue" %>
     migrations_paths: db/queue_migrate
   cable:
-    <<: *primary_production
-    database: strong_towns_kelowna_production_cable
-    MIGRATIONS_PATHS: DB/CABLE_MIGRATE
+    <<: *proddb
+    database: <%= ENV["CABLE_DATABASE_NAME"] || "strong_towns_kelowna_production_cable" %>
+    migrations_paths: db/cable_migrate
