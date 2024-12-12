@@ -2,7 +2,7 @@
   <% current_page = page.to_i %>
   <% current_page = current_page.positive? ? current_page : 0 %>
   <div class="flex justify-between gap-4 items-center text-light">
-    <%= link_to "Previous Page", articles_path(category_id: category_id, page: current_page - 1), disabled: current_page <= 0 %>
+    <%= link_to "Previous Page", articles_path(category_id: category_id, page: current_page - (current_page > 0 ? 1 : 0)) %>
     <%= current_page + 1 %>
     <%= link_to "Next Page", articles_path(category_id: category_id, page: current_page + 1) %>
   </div>
